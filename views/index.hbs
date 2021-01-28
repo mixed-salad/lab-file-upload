@@ -1,2 +1,12 @@
 <h1>{{title}}</h1>
 <p>Welcome Ironhacker!</p>
+
+{{#each posts}}
+<div>
+  <a href=""><h4>{{ picName }}</h4></a>
+  <img src="{{ picPath }}" alt="{{ picName }}">
+
+ <p>{{ content }}</p>
+</div>
+{{/each}}
+

@@ -1,12 +1,13 @@
-const { Schema, model, Mongoose } = require('mongoose');
+const mongoose = require('mongoose');
+const { post } = require('../app');
 
-const postSchema = new Schema(
+const postSchema = new mongoose.Schema(
   {
     content: {
       type: String,
     },
     creatorId: {
-      type: Mongoose.Types.ObjectId,
+      type: mongoose.Types.ObjectId,
       ref: 'User'
     },
     picPath: {
@@ -21,4 +22,5 @@ const postSchema = new Schema(
   }
 );
 
-module.exports = model('Post', postSchema);
+const Post = mongoose.model('Post', postSchema);
+module.exports = Post;
