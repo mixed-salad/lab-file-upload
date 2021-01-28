@@ -9,6 +9,9 @@ const cookieParser = require('cookie-parser');
 const hbs = require('hbs');
 const mongoose = require('mongoose');
 
+const multer = require('multer');
+const uploadMiddleware = multer({dest: 'uploads'});
+
 // Set up the database
 require('./configs/db.config');
 
