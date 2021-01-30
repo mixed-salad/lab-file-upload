@@ -120,7 +120,7 @@ ul li {
 }
 
 .post-image {
-  width: 6em;
-  height: 6em;
+  width: 40em;
+  height: 40em;
   object-fit: cover;
 }
