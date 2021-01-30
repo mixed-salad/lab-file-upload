@@ -118,3 +118,9 @@ ul li {
   font-weight: bold;
   font-size: 2em;
 }
+
+.post-image {
+  width: 6em;
+  height: 6em;
+  object-fit: cover;
+}

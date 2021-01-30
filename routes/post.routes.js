@@ -11,9 +11,9 @@ router.get('/create', routeGuard, (req, res, next) => {
 });
 
 router.post('/create', routeGuard, uploadMiddleware.single('image'), (req, res, next) => {
-  const {content, picName} = req.body
+  const { content, picName } = req.body;
 
-  if(content === ''){
+  if (content === '') {
     res.render('posts/create', {
       errorMessage: 'Content cannot be empty.'
     });
@@ -21,7 +21,7 @@ router.post('/create', routeGuard, uploadMiddleware.single('image'), (req, res, 
   }
 
   let image;
-  if(req.file){
+  if (req.file) {
     image = req.file.path;
   }
 
@@ -31,13 +31,23 @@ router.post('/create', routeGuard, uploadMiddleware.single('image'), (req, res, 
     picPath: image,
     creatorId: req.session.currentUser._id
   })
-  .then( post => {
-    res.redirect('/');
-  })
-  .catch(error => {
-    next(error);
-  })
-  
+    .then(post => {
+      res.redirect('/');
+    })
+    .catch(error => {
+      next(error);
+    });
+});
+
+router.get('/:id', (req, res, next) => {
+  const id = req.params.id;
+  Post.findById(id)
+    .then(post => {
+      res.render('posts/post-details', { post });
+    })
+    .catch(error => {
+      next(error);
+    });
 });
 
 module.exports = router;
